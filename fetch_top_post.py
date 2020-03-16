@@ -1,5 +1,8 @@
 #! usr/bin/env python3
 
+# COMP 4206 A Final Project
+# File: fetch_top_post.py
+
 # Purpose
 #   fetch_top_post.py will fetch the top post off of Reddit's
 #   front page, either by day or by week. It pulls important
@@ -11,18 +14,14 @@
 #   Crawler code adapted from https://www.storybench.org/how-to-scrape-reddit-with-python/
 #   All other code original content by Adrianna Chang and Britta Evans-Fenton.
 
-# COMP 4206 A Final Project
-
 # Import necessary libraries
 import praw
 import pandas as pd
 import datetime as dt
 
-# def get_date(created)
-# Transform timestamp into proper datetime object
-
 
 def get_date(created):
+    # Transform timestamp into proper datetime object
     return dt.datetime.fromtimestamp(created)
 
 
@@ -39,8 +38,12 @@ subreddit = reddit.subreddit('all')
 
 # Specify number of top posts to grab
 num_posts_to_grab = 10
+# Specify whether to grab top posts for the day or for the week
+time_band = 'week'
+
+# Store all top posts for specified parameters in an array
 top_posts = []
-for post in subreddit.top('week', limit=num_posts_to_grab):
+for post in subreddit.top(time_band, limit=num_posts_to_grab):
     top_posts.append(post)
 
 # Grab one of those posts

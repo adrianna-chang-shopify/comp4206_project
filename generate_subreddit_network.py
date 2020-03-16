@@ -1,4 +1,8 @@
 #! usr/bin/env python3
+
+# COMP 4206 A Final Project
+# File: generate_subreddit_network.py
+
 #   generate_subreddit_network.py seeks to identify subreddit communities that often
 #   post or cross post each other's content. Given a manual set of subreddits,
 #   which are pulled from fetch_top_post.py, it looks at the top 100 posts in each
@@ -7,8 +11,6 @@
 
 # Acknowledgements
 #   Code is original content by Adrianna Chang and Britta Evans-Fenton.
-
-# COMP 4206 A Final Project
 
 # Import necessary libraries
 import praw
@@ -20,6 +22,7 @@ import datetime as dt
 
 
 def get_date(created):
+    # Transform timestamp into proper datetime object
     return dt.datetime.fromtimestamp(created)
 
 
