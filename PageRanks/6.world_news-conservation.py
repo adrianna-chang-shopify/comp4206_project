@@ -1,34 +1,5 @@
 # World News - Conservation
 
-# A worldnews
-# B	environment
-# C	collapse
-# D	fresno
-# E	Libertarian
-# F	conservation
-# G	LateStageCapitalism
-# H	Positive_News
-# I	theworldnews
-# J	neogaianism
-# K	PublicLands
-# L	EndangeredSpecies
-# M	goodnews
-# N	bayarea
-# O	ClimateActionPlan
-# P	VoluntaristMemes
-# Q	ABoringDystopia
-# R	Anarcho_Capitalism
-# S	topofreddit
-# T	MAGAs
-# U	landconservation
-# V	WayOfTheBern
-# W	EvolveSustain
-# X	LPCalifornia
-# Y	TheAbditory
-# Z	marijuanaenthusiasts
-# AA	EcoNewsNetwork
-# AB	LandscapingTips
-
 # run:
 # python 6.world_news-conservation.py
 
@@ -71,10 +42,84 @@ B = np.array([
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ])
 
-# Page Rank
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C/C.sum(axis=0,keepdims=1)
+    # A = C/C.sum(axis=0,keepdims=1)
+    sums = C.sum(axis=0,keepdims=1)
+    sums[sums==0] = 1
+    A = C/sums
 
-print(A)
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
+
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+for i in range(len(A)):
+    print(str(A[i]))
+
+# FOR TROUBLESHOOTING
 print(np.sum(A))
+
+# DATA:
+# A worldnews
+# B	environment
+# C	collapse
+# D	fresno
+# E	Libertarian
+# F	conservation
+# G	LateStageCapitalism
+# H	Positive_News
+# I	theworldnews
+# J	neogaianism
+# K	PublicLands
+# L	EndangeredSpecies
+# M	goodnews
+# N	bayarea
+# O	ClimateActionPlan
+# P	VoluntaristMemes
+# Q	ABoringDystopia
+# R	Anarcho_Capitalism
+# S	topofreddit
+# T	MAGAs
+# U	landconservation
+# V	WayOfTheBern
+# W	EvolveSustain
+# X	LPCalifornia
+# Y	TheAbditory
+# Z	marijuanaenthusiasts
+# AA	EcoNewsNetwork
+# AB	LandscapingTips
+
+# OUTPUT:
+# A = 0.580357142876
+# B = 0.176785714284
+# C = 0.0
+# D = 0.0
+# E = 8.30379901732e-33
+# F = 0.0
+# G = 1.16087110262e-30
+# H = 0.0
+# I = 0.0
+# J = 0.0
+# K = 0.0
+# L = 0.0607142857063
+# M = 0.0
+# N = 0.0
+# O = 0.0
+# P = 3.32151960693e-32
+# Q = 1.9198383328e-30
+# R = 2.4911397052e-32
+# S = 0.0
+# T = 0.0
+# U = 0.0
+# V = 2.04244758061e-50
+# W = 0.0
+# X = 0.0
+# Y = 0.0
+# Z = 0.0
+# AA = 0.182142857134
+# AB = 0.0

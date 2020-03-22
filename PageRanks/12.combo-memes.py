@@ -1,13 +1,7 @@
-# A	memes
-# B	Blessed_Images
-# C	TIHI
-# D	awfuleverything
-# E	mildlyinfuriating
-# F	FellowKids
-# G	MakeMeSuffer
-# H	thanksihateit
-# I	oddlyterrifying
-# J	extremelyinfuriating
+# Combined Subreddits - memes
+
+# run:
+# $ python 12.combo-memes.py
 
 import numpy as np
 
@@ -31,15 +25,49 @@ B = np.array([
     [0.2, 0, 0, 0.2, 0.6, 0, 0, 0, 0, 0],
 ])
 
-# Page Rank
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C/C.sum(axis=0,keepdims=1)
+    # A = C/C.sum(axis=0,keepdims=1)
+    sums = C.sum(axis=0,keepdims=1)
+    sums[sums==0] = 1
+    A = C/sums
 
-print(A)
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
+
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+for i in range(len(A)):
+    print(str(A[i]))
+
+# FOR TROUBLESHOOTING
 print(np.sum(A))
 
+# DATA:
+# A	memes
+# B	Blessed_Images
+# C	TIHI
+# D	awfuleverything
+# E	mildlyinfuriating
+# F	FellowKids
+# G	MakeMeSuffer
+# H	thanksihateit
+# I	oddlyterrifying
+# J	extremelyinfuriating
+
 # OUTPUT:
-# [ 0.05845687  0.          0.196473    0.22008772  0.06048226  0.0078512
-#   0.22762772  0.08677086  0.11841583  0.02383454]
-# 1.0
+# A = 0.0584568690412
+# B = 0.0
+# C = 0.196473004712
+# D = 0.22008771947
+# E = 0.0604822559829
+# F = 0.00785120278897
+# G = 0.227627717145
+# H = 0.0867708597732
+# I = 0.118415832236
+# J = 0.023834538852
+

@@ -1,3 +1,7 @@
+# Memes - I hate this
+
+# run:
+# $ python 8.meme-I_hate_this.py
 
 import numpy as np
 
@@ -25,10 +29,59 @@ B = np.array([
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ])
 
-# Page Rank
+
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C/C.sum(axis=0,keepdims=1)
+    # A = C/C.sum(axis=0,keepdims=1)
+    sums = C.sum(axis=0,keepdims=1)
+    sums[sums==0] = 1
+    A = C/sums
 
-print(A)
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
+
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+for i in range(len(A)):
+    print(str(A[i]))
+
+# FOR TROUBLESHOOTING
 print(np.sum(A))
+
+# DATA:
+# A	memes
+# B	TIHI
+# C	awfuleverything
+# D	deepfrieddiagrams
+# E	mildlyinfuriating
+# F	FellowKids
+# G	MakeMeSuffer
+# H	thanksihateit
+# I	void_memes
+# J	school_memes
+# K	oddlyterrifying
+# L	OG_Autobauer
+# M	CinnamonToastKen
+# N	extremelyinfuriating
+# O	RamnagaraRagiMuddhes
+
+# OUTPUT:
+# A = 0.112256251274
+# B = 0.166323539594
+# C = 0.207807694355
+# D = 0.0
+# E = 0.0259759617939
+# F = 0.0185144210475
+# G = 0.246387538335
+# H = 0.144636901394
+# I = 0.0
+# J = 0.0
+# K = 0.0716037017594
+# L = 0.0
+# M = 0.0
+# N = 0.00649399044836
+# O = 0.0

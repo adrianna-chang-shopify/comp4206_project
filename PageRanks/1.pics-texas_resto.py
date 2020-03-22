@@ -1,28 +1,14 @@
 # Pics - Texan resto 
 
-# A	pics
-# B	texas
-# C	HelloInternet
-# D	antiwork
-# E	no_sob_story
-# F	Anarcho_Capitalism
-# G	ABoringDystopia
-# H	topofreddit
-# I	fairwage
-# J	goodpraxis
-# K	EndTipping
-# L	mutualism
-# M	Shitstatistssay
-
-# run: 
+# run: (once in proper directory)
 # $ python 1.pics-texas_resto.py
 
 import numpy as np
 
-# iteration Matrix
+# SUM OUT MATRIX
 A = np.array([32.0/40.0,	1.0/40.0,	0.0/40.0,	1.0/40.0,	0.0/40.0,	0.0/40.0,	6.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0])
 
-# weighted edges matrix
+# WEIGHTED EDGE MATRIX
 B = np.array([
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -39,17 +25,51 @@ B = np.array([
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ])
 
-# Results
-# C = A.dot(B)
-
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C
+    A = C/C.sum(axis=0,keepdims=1)
 
-print(A)
-print(np.sum(A))
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
 
-# OUTPUT:[  8.45000000e-01   1.55000000e-01   0.00000000e+00   1.25748668e-23
-#    0.00000000e+00   0.00000000e+00   7.54492011e-23   0.00000000e+00
-#    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
-#    0.00000000e+00]
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+# for i in range(len(A)):
+#     print(str(A[i]))
+
+# FOR TROUBLESHOOTING
+# print(np.sum(A))
+
+# DATA:
+# A	pics
+# B	texas
+# C	HelloInternet
+# D	antiwork
+# E	no_sob_story
+# F	Anarcho_Capitalism
+# G	ABoringDystopia
+# H	topofreddit
+# I	fairwage
+# J	goodpraxis
+# K	EndTipping
+# L	mutualism
+# M	Shitstatistssay
+
+# OUTPUT:
+# A = 0.845
+# B = 0.155
+# C = 0.0
+# D = 1.25748668462e-23
+# E = 0.0
+# F = 0.0
+# G = 7.54492010771e-23
+# H = 0.0
+# I = 0.0
+# J = 0.0
+# K = 0.0
+# L = 0.0
+# M = 0.0

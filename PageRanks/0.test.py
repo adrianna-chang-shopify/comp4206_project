@@ -14,7 +14,17 @@ B = np.array([
 # Page Rank
 for i in range(100):
     C = A.dot(B)
-    A = C
+    A = C/C.sum(axis=0,keepdims=1)
 
-print(A)
+A = [float(x) for x in A]
+
+# D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+
+# for i in range(len(A)):
+#     print(D[i] + " = " + str(A[i]))
+
+for i in range(len(A)):
+    print(str(A[i]))
+
+# Confirming 
 print(np.sum(A))

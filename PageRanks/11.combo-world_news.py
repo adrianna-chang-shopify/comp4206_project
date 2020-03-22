@@ -1,18 +1,7 @@
-# A	worldnews
-# B	environment
-# C	collapse
-# D	Libertarian
-# E	conservation
-# F	LateStageCapitalism
-# G	goodnews
-# H	VoluntaristMemes
-# I	ABoringDystopia
-# J	Anarcho_Capitalism
-# K	landconservation
-# L	WayOfTheBern
-# M	EcoNewsNetwork
-# N	UpliftingNews
-# O	ClimateActionPlan
+# Combined Subreddits - worldnews
+
+# run:
+# $ python 11.combo-world_news.py
 
 import numpy as np
 
@@ -40,25 +29,58 @@ B = np.array([
 [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0]
 ])
 
-# Page Rank
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C/C.sum(axis=0,keepdims=1)
+    # A = C/C.sum(axis=0,keepdims=1)
+    sums = C.sum(axis=0,keepdims=1)
+    sums[sums==0] = 1
+    A = C/sums
 
-print(A)
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
+
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+for i in range(len(A)):
+    print(str(A[i]))
+
+# FOR TROUBLESHOOTING
 print(np.sum(A))
 
-# OUTPUT:
-# Before the unit vector:
-# [  1.58809640e-01   2.41792078e-01   6.84641888e-02   4.94789864e-21
-#    8.89728767e-02   2.20373301e-20   6.14776790e-03   2.94488640e-20
-#    2.06796439e-20   2.22818335e-20   0.00000000e+00   1.17188166e-20
-#    2.67129151e-01   1.22955358e-01   4.57289418e-02]
-# 1.00000000204
+# DATA:
+# A	worldnews
+# B	environment
+# C	collapse
+# D	Libertarian
+# E	conservation
+# F	LateStageCapitalism
+# G	goodnews
+# H	VoluntaristMemes
+# I	ABoringDystopia
+# J	Anarcho_Capitalism
+# K	landconservation
+# L	WayOfTheBern
+# M	EcoNewsNetwork
+# N	UpliftingNews
+# O	ClimateActionPlan
 
-# After:
-# [  1.58809639e-01   2.41792078e-01   6.84641887e-02   4.94789863e-21
-#    8.89728765e-02   2.20373301e-20   6.14776789e-03   2.94488639e-20
-#    2.06796439e-20   2.22818335e-20   0.00000000e+00   1.17188166e-20
-#    2.67129150e-01   1.22955358e-01   4.57289417e-02]
-# 1.0
+# OUTPUT:
+# A = 0.158809639285
+# B = 0.241792077801
+# C = 0.0684641886852
+# D = 4.94789863268e-21
+# E = 0.0889728764899
+# F = 2.20373300749e-20
+# G = 0.00614776789006
+# H = 2.94488639299e-20
+# I = 2.06796438939e-20
+# J = 2.22818334875e-20
+# K = 0.0
+# L = 1.17188165608e-20
+# M = 0.267129150364
+# N = 0.122955357804
+# O = 0.0457289416806

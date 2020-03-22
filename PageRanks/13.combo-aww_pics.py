@@ -1,14 +1,7 @@
-# A	aww
-# B	PeopleFuckingDying
-# C	cats
-# D	pics
-# E	texas
-# F	antiwork
-# G	ABoringDystopia
-# H	HongKongProtest
-# I	wholesome
-# J	Judaism
-# K	KarmaConspiracy
+# Combined Subreddts - aww + pics
+
+# run:
+# $ python 13.combo-aww_pics.py
 
 import numpy as np
 
@@ -32,16 +25,52 @@ B = np.array([
 [0.125, 0, 0, 0.75, 0, 0, 0, 0, 0, 0, 0.125],
 ])
 
-# Page Rank
+# PAGE RANK ALGO
 for i in range(100):
     C = A.dot(B)
-    A = C/C.sum(axis=0,keepdims=1)
+    # A = C/C.sum(axis=0,keepdims=1)
+    sums = C.sum(axis=0,keepdims=1)
+    sums[sums==0] = 1
+    A = C/sums
 
-print(A)
+# FOR OUTPUTTING RESULT
+A = [float(x) for x in A]
+
+D = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
+for i in range(len(A)):
+    print(D[i] + " = " + str(A[i]))
+
+# FOR THE DATA INPUT INTO SPREADSHEET:
+for i in range(len(A)):
+    print(str(A[i]))
+
+# FOR TROUBLESHOOTING
 print(np.sum(A))
 
+# DATA:
+# A	aww
+# B	PeopleFuckingDying
+# C	cats
+# D	pics
+# E	texas
+# F	antiwork
+# G	ABoringDystopia
+# H	HongKongProtest
+# I	wholesome
+# J	Judaism
+# K	KarmaConspiracy
+
 # OUTPUT:
-# [  4.23983060e-01   7.82704200e-02   2.35265451e-01   2.00470278e-01
-#    2.50587844e-02   4.52120191e-27   4.52120191e-27   0.00000000e+00
-#    8.31339345e-03   0.00000000e+00   2.86386107e-02]
-# 0.999999997423
+# A = 0.423983060789
+# B = 0.0782704202175
+# C = 0.23526545205
+# D = 0.200470278242
+# E = 0.0250587844166
+# F = 4.52120191716e-27
+# G = 4.52120191716e-27
+# H = 0.0
+# I = 0.00831339347154
+# J = 0.0
+# K = 0.0286386108135
+
+
