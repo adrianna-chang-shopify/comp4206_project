@@ -19,15 +19,8 @@
 
 import numpy as np
 
-# initilize iteration matrix
-n = 13.0
-iterationArray = []
-value = 1/n
-for i in range(int(n)):
-    iterationArray.append(value)
-
 # iteration Matrix
-A = np.array([iterationArray])
+A = np.array([32.0/40.0,	1.0/40.0,	0.0/40.0,	1.0/40.0,	0.0/40.0,	0.0/40.0,	6.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0,	0.0/40.0])
 
 # weighted edges matrix
 B = np.array([
@@ -55,3 +48,8 @@ for i in range(100):
 
 print(A)
 print(np.sum(A))
+
+# OUTPUT:[  8.45000000e-01   1.55000000e-01   0.00000000e+00   1.25748668e-23
+#    0.00000000e+00   0.00000000e+00   7.54492011e-23   0.00000000e+00
+#    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+#    0.00000000e+00]

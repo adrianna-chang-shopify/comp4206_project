@@ -15,15 +15,8 @@
 
 import numpy as np
 
-# initilize iteration matrix
-n = 9.0
-iterationArray = []
-value = 1/n
-for i in range(int(n)):
-    iterationArray.append(value)
-
 # iteration Matrix
-A = np.array([iterationArray])
+A = np.array([28.0/30.0,	0.0/30.0,	0.0/30.0,	0.0/30.0,	2.0/30.0,	0.0/30.0,	0.0/30.0,	0.0/30.0,	0.0/30.0])
 
 # weighted edges matrix
 B = np.array([
@@ -42,7 +35,9 @@ B = np.array([
 
 for i in range(1):
     C = A.dot(B)
-    A = C
+    A = C/C.sum(axis=0,keepdims=1)
 
 print(A)
 print(np.sum(A))
+
+# OUTPUT:

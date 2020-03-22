@@ -1,15 +1,10 @@
 
 import numpy as np
 
-# initilize iteration matrix
-n = 16.0
-iterationArray = []
-value = 1/n
-for i in range(int(n)):
-    iterationArray.append(value)
-
 # iteration Matrix
-A = np.array([iterationArray])
+A = np.array([
+    0.7755102041, 0.1020408163, 0, 0.0306122449, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.09183673469, 0
+])
 
 # weighted edges matrix
 B = np.array([
@@ -31,12 +26,10 @@ B = np.array([
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ])
 
-# Results
-# C = A.dot(B)
-
+# Page Rank
 for i in range(100):
     C = A.dot(B)
-    A = C
+    A = C/C.sum(axis=0,keepdims=1)
 
 print(A)
 print(np.sum(A))

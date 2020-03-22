@@ -1,6 +1,6 @@
 # World News - Conservation
 
-# A	worldnews
+# A worldnews
 # B	environment
 # C	collapse
 # D	fresno
@@ -34,15 +34,10 @@
 
 import numpy as np
 
-# initilize iteration matrix
-n = 28.0
-iterationArray = []
-value = 1/n
-for i in range(int(n)):
-    iterationArray.append(value)
-
 # iteration Matrix
-A = np.array([iterationArray])
+A = np.array([
+    0.4315789474, 0.03157894737, 0.01052631579, 0, 0.01052631579, 0, 0.04210526316, 0, 0, 0, 0, 0.01052631579, 0, 0, 0, 0.04210526316, 0.05263157895, 0.03157894737, 0, 0, 0.01052631579, 0.01052631579, 0, 0, 0, 0, 0.3157894737, 0
+])
 
 # weighted edges matrix
 B = np.array([
@@ -76,12 +71,10 @@ B = np.array([
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ])
 
-# Results
-# C = A.dot(B)
-
+# Page Rank
 for i in range(100):
     C = A.dot(B)
-    A = C
+    A = C/C.sum(axis=0,keepdims=1)
 
 print(A)
 print(np.sum(A))
